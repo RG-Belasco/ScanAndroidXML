@@ -12,7 +12,7 @@ def fireBaseTest(filename, stringsFile):
 	firebaseURL=""
 	#writeResults(filename,"</br>[Info] --- Checking for firebase URLs")
 	# for Strings.xml file 
-	stringsFile=pwd+"\\"+filename+stringsFile
+	stringsFile=pwd+"//"+filename+stringsFile
 	writePassResults(filename,"<br> <br><b>Firebase Checks</b> ")
 	try:
 		#writeResults(filename,"</br>[Info]---Strings.xml file Location:"+ stringsFile)
@@ -41,7 +41,7 @@ def fireBaseTest(filename, stringsFile):
 						
 def network_security_config_Test(filename,nscFile):
 	#writeResults(filename,"</br>[Info] --- Network security config check is in progress")
-	stringsFile=pwd+"\\"+filename+nscFile
+	stringsFile=pwd+"//"+filename+nscFile
 	writePassResults(filename,"<br> <br><b>Network Security Config Checks</b>")
 	try:
 		with open(stringsFile, errors='ignore') as f:
@@ -71,7 +71,7 @@ def network_security_config_Test(filename,nscFile):
 def getDeepLinks():
 	writePassResults(filename,"</br></br> <b> Custom URL Check</b>")
 	# for AndroidManifest.xml file 
-	f1=pwd+"\\"+filename+"\\"+manifestFile
+	f1=pwd+"//"+filename+"//"+manifestFile
 	writePassResults(filename,"</br>[Info]---AndroidManifest.xml file Location: "+ f1)
 	with open(f1, errors='ignore') as f:
 		f2=f.read()
@@ -116,10 +116,10 @@ def getDeepLinks():
 					scheme=scheme.replace('/>','')
 					writePassResults(filename,"</br>no host found</br>scheme: " + scheme +"</br>Deeplink: " + scheme + "://")
 		else:
-			writePassResults(filename,"</br>No more schemes")			
+			writePassResults(filename,"</br>No more schemes")		
 			
 def isDebuggableOrBackup():
-	f1=pwd+"\\"+filename+"\\"+manifestFile
+	f1=pwd+"//"+filename+"//"+manifestFile
 	with open(f1, errors='ignore') as f:
 		f2=f.read()
 		searchObj=re.search(r'android:debuggable="true"' , f2, re.M|re.I)
@@ -150,8 +150,8 @@ apkfile = sys.argv[-1]
 # Get file extension .apk 
 filename, file_extension = os.path.splitext(apkfile)
 pwd=os.getcwd()
-stringsFile="\\res\\values\\strings.xml"
-nscFile="\\res\\xml\\network_security_config.xml"
+stringsFile="//res//values//strings.xml"
+nscFile="//res//xml//network_security_config.xml"
 manifestFile="AndroidManifest.xml"
 resultsHtml=filename+".html"
 resultsHtmlTemp=filename+"Temp.html"
